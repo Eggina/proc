@@ -135,10 +135,13 @@ class DataBase:
 if __name__ == '__main__':
     db = DataBase()
     # db.create_engine('sqlite:///data.db')
-    ssl_args = {'sslrootcert': 'server-ca.pem',
-                'sslcert': 'client-cert.pem', 'sslkey': 'client-key.pem'}
-    db.create_session(
-        'postgresql://crud_datos_sube:domino@35.199.112.198:5432/datos_sube', ssl_args)
+    #ssl_args = {'sslrootcert': 'server-ca.pem',
+                #'sslcert': 'client-cert.pem', 'sslkey': 'client-key.pem'}
+    #db.create_session(
+        #'postgresql://crud_datos_sube:domino@35.199.112.198:5432/datos_sube', ssl_args)
+    
+    ssl_args = []
+    db.create_session('postgresql://crud_datos_sube:domino@127.0.0.1:5432/datos_sube', ssl_args)
 
     fabrica = FabricaTabla()
 
