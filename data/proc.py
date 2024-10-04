@@ -72,10 +72,10 @@ class TablaTarifasPlanas(Tabla):
 
     def load_csv_to_dataframe(self):
         headers = ['fecha', 'valor']
-        dtypes = {'fecha': 'str', 'valor': 'float'}
+        dtypes = {'fecha': 'datetime', 'valor': 'float'}
+        parse_dates = ['fecha']
         self.df = pd.read_csv(self.path, skiprows=1, sep=';', decimal=',',
-                              header=None, names=headers, dtype=dtypes)
-        self.df['fecha'] = self.df['fecha'].apply(lambda x: pd.to_datetime(x))
+                              header=None, names=headers, dtype=dtypes, parse_dates=parse_dates)
 
 class TablaLineas(Tabla):
     def __init__(self):
